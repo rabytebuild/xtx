@@ -38,7 +38,7 @@ function login() {
 
     if ($httpCode == 200) {
         $response_data = json_decode($response, true);
-        if ($response_data["code"] == 0) {
+        if ($response_data["code"] = 0) {
             echo "Login successful\n";
             curl_close($ch);
             return true;
@@ -89,14 +89,12 @@ function faucet() {
     if ($httpCode == 200) {
         $response_data = json_decode($response, true);
         echo "Response: " . json_encode($response_data) . "\n"; // Expose entire response message
-        if ($response_data["code"] == 0) {
+        if ($response_data["code"] = 0) {
             $message = $response_data["message"];
-            preg_match('/<span translate=\'no\' class=\'text-info fs-2\'>(.+?)<\/span>/', $message, $matches);
-            $amount = $matches[1] ?? "unknown amount";
-            echo "Request successful: Received $amount\n";
+            echo "Request successful: XRP Claimed";
             curl_close($ch);
             return true;
-        } elseif ($response_data["code"] == 2) {
+        } elseif ($response_data["code"] = 2) {
             echo "Wave missed: " . $response_data["message"] . "\n";
             curl_close($ch);
             return false;
